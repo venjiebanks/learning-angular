@@ -1,7 +1,8 @@
-
 <style>
   :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol';
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
@@ -167,7 +168,7 @@
   }
 
   .terminal::before {
-    content: "\2022 \2022 \2022";
+    content: '\2022 \2022 \2022';
     position: absolute;
     top: 0;
     left: 0;
@@ -182,7 +183,7 @@
   }
 
   .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
@@ -226,18 +227,19 @@
     align-items: center;
     font-size: 12px;
     padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
+    border: 1px solid rgba(27, 31, 35, 0.2);
     border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
     margin-left: 4px;
     font-weight: 600;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+      sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   }
 
   .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
-    background-position: -.5em;
+    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+    border-color: rgba(27, 31, 35, 0.35);
+    background-position: -0.5em;
   }
 
   .github-star-badge .material-icons {
@@ -254,11 +256,9 @@
     width: 1920px;
   }
 
-
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
-
-    .card-container > *:not(.circle-link) ,
+    .card-container > *:not(.circle-link),
     .terminal {
       width: 100%;
     }
@@ -286,14 +286,72 @@
   }
 </style>
 
-
+<!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <span>ViewChild() decorator example</span>
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  <span>Creating your first two-state Angular Animation</span>
   <div class="spacer"></div>
 </div>
 
 <div class="content" role="main">
-  <h1 #changecolor>This is a ViewChild example</h1>
-  <h2>by: Venjie Banks</h2>
+  <div class="type-picker">
+    <h5>Pick Social Card Type</h5>
+    <div class="type-picker__options">
+      <div
+        class="type-picker__options__option"
+        (click)="setCardType(cardTypes.Facebook)"
+      >
+        <button
+          class="btn type-picker__options__option__btn"
+          [ngClass]="
+            selectedCardType === cardTypes.Facebook
+              ? 'btn-primary type-picker__options__option__btn--active'
+              : 'btn-light'
+          "
+        >
+          <div class="icon-facebook"></div>
+          <div
+            class="type-picker__options__option__btn__text"
+            [@socialBtnText]="
+              selectedCardType === cardTypes.Facebook
+                ? 'btn-active-text'
+                : 'btn-inactive-text'
+            "
+          >
+            Facebook
+          </div>
+        </button>
+      </div>
+      <div
+        class="type-picker__options__option"
+        (click)="setCardType(cardTypes.Twitter)"
+      >
+        <button
+          class="btn type-picker__options__option__btn"
+          [ngClass]="
+            selectedCardType === cardTypes.Twitter
+              ? 'btn-primary type-picker__options__option__btn--active'
+              : 'btn-light'
+          "
+        >
+          <div class="icon-twitter"></div>
+          <div
+            class="type-picker__options__option__btn__text"
+            [@socialBtnText]="
+              selectedCardType === cardTypes.Twitter
+                ? 'btn-active-text'
+                : 'btn-inactive-text'
+            "
+          >
+            Twitter
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <app-social-card [type]="selectedCardType"></app-social-card>
 </div>
-

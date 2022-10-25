@@ -1,19 +1,21 @@
-import { Component, ViewChild } from '@angular/core';
-import { GalleryComponent } from './components/gallery/gallery.component';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'cc-view-child';
-  @ViewChild(GalleryComponent) gallery;
+export class AppComponent implements AfterViewInit  {
 
-  addNewPicture() {
-    this.gallery.pictures.unshift(this.gallery.generateImage());
+  title = 'ViewChild Example';
+  
+  @ViewChild('changecolor')
+  changeColor: ElementRef;
+
+  ngAfterViewInit() {
+
+    this.changeColor.nativeElement.style.color="red";
+
   }
 
-  removeFirstPicture() {
-    this.gallery.pictures.shift();
-  }
 }
